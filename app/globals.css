@@ -1,0 +1,420 @@
+@import "tailwindcss";
+
+@source "../app";
+@source "../components";
+@source "../lib";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-surface: hsl(var(--surface));
+  --color-elevated: hsl(var(--surface-elevated));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-border: hsl(var(--border));
+  --color-border-subtle: hsl(var(--border-subtle));
+  --color-brand: hsl(var(--brand));
+  --color-brand-soft: hsl(var(--brand-soft));
+  --color-surface-hover: hsl(var(--surface-hover));
+  --color-sidebar: hsl(var(--sidebar));
+  --color-foreground-muted: hsl(var(--foreground-muted));
+
+  --color-overlay: var(--overlay);
+  --color-inverse: hsl(var(--inverse));
+  --color-inverse-foreground: hsl(var(--inverse-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-hover: hsl(var(--primary-hover));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-accent-on-inverse: hsl(var(--accent-on-inverse));
+  --color-focus-ring: hsl(var(--focus-ring));
+
+  --color-card: hsl(var(--surface));
+  --color-card-foreground: hsl(var(--foreground));
+  --color-popover: hsl(var(--surface));
+  --color-popover-foreground: hsl(var(--foreground));
+  --color-secondary: hsl(var(--muted));
+  --color-secondary-foreground: hsl(var(--foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-hover: hsl(var(--destructive-hover));
+  --color-destructive-soft: hsl(var(--destructive-soft));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-success: hsl(var(--success));
+  --color-success-soft: hsl(var(--success-soft));
+  --color-warning: hsl(var(--warning));
+  --color-warning-soft: hsl(var(--warning-soft));
+  --color-info: hsl(var(--info));
+  --color-info-soft: hsl(var(--info-soft));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--focus-ring));
+
+  --font-display: var(--font-bebas-neue), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
+
+  --font-editorial: var(--font-spectral), Georgia, serif;
+
+  --radius-card: 0.75rem;
+  --radius-button: 0.375rem;
+
+  --text-display: clamp(2.875rem, 8vw, 4.625rem);
+  --text-display--line-height: 0.95;
+  --text-page-title: clamp(2.5rem, 6vw, 3.5rem);
+  --text-page-title--line-height: 0.95;
+  --text-headline: clamp(1.625rem, 4vw, 1.875rem);
+  --text-headline--line-height: 1;
+
+  --text-accent-display: 1.25rem;
+  --text-accent-display--line-height: 1;
+  --text-lede: clamp(1.0625rem, 2vw, 1.25rem);
+  --text-lede--line-height: 1.4;
+  --text-body: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  --text-body--line-height: 1.5;
+  --text-meta: 0.8125rem;
+  --text-meta--line-height: 1.3;
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.3;
+
+  --shadow-card: var(--card-shadow);
+  --shadow-elevated: var(--elevated-shadow);
+
+  --ease-entrance: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-move: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --animate-fade-in: fade-in 200ms ease-out both;
+
+  --animate-hero-media: hero-media 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-hero-rise: hero-rise 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-hero-fade: fade-in 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  --animate-overlay-in: fade-in 160ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-overlay-out: fade-out 120ms ease-out both;
+  --animate-dialog-in: dialog-in 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-dialog-out: dialog-out 140ms ease-out both;
+  --animate-popover-in: popover-in 140ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-popover-out: fade-out 100ms ease-out both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes hero-media {
+    from {
+      opacity: 0;
+      transform: scale(1.06);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes dialog-in {
+    from {
+      opacity: 0;
+      translate: -50% -48%;
+      scale: 0.96;
+    }
+    to {
+      opacity: 1;
+      translate: -50% -50%;
+      scale: 1;
+    }
+  }
+  @keyframes dialog-out {
+    from {
+      opacity: 1;
+      translate: -50% -50%;
+      scale: 1;
+    }
+    to {
+      opacity: 0;
+      translate: -50% -48%;
+      scale: 0.96;
+    }
+  }
+  @keyframes popover-in {
+    from {
+      opacity: 0;
+      scale: 0.97;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  @keyframes stage-glow {
+    0%,
+    100% {
+      opacity: 0.55;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+  }
+}
+
+@utility duration-theme {
+  transition-duration: 300ms;
+}
+
+:root {
+
+  color-scheme: light;
+
+  --background: 40 35% 93%; 
+  --foreground: 0 0% 8%; 
+  --surface: 40 53% 97%; 
+  --surface-elevated: 35 33% 87%; 
+  --surface-hover: 36 32% 85%; 
+  --sidebar: 37 35% 90%; 
+  --muted: 35 33% 87%; 
+  --muted-foreground: 36 5% 39%; 
+
+  --foreground-muted: 35 5% 52%;
+  --border: 32 24% 79%; 
+  --border-subtle: 36 32% 85%; 
+  --input: 33 25% 83%; 
+
+  --brand: 35 62% 37%; 
+  --brand-soft: 38 61% 62%; 
+  --primary: 37 56% 49%; 
+  --primary-hover: 35 62% 37%; 
+  --primary-foreground: 0 0% 0%; 
+  --accent: 37 56% 49%; 
+  --accent-foreground: 0 0% 0%;
+  --accent-on-inverse: 38 61% 62%; 
+
+  --inverse: 32 10% 4%; 
+  --inverse-foreground: 39 33% 92%; 
+  --focus-ring: 37 56% 49%; 
+  --overlay: rgb(11 10 9 / 65%);
+  --destructive: 4 56% 45%; 
+  --destructive-hover: 3 57% 36%; 
+  --destructive-soft: 7 63% 92%; 
+  --destructive-foreground: 40 53% 97%;
+  --success: 151 45% 36%; 
+  --success-soft: 150 39% 91%; 
+  --warning: 35 61% 47%; 
+  --warning-soft: 38 65% 90%; 
+  --info: 204 47% 42%; 
+  --info-soft: 203 52% 91%; 
+
+  --card-shadow:
+    0 1px 2px rgb(21 21 21 / 5%),
+    0 8px 24px rgb(21 21 21 / 6%);
+  --elevated-shadow: 0 24px 70px rgb(21 21 21 / 18%);
+
+  --z-sticky: 40;
+  --z-overlay: 50;
+  --z-modal: 50;
+  --z-grain: 60;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: 32 10% 4%; 
+  --foreground: 39 33% 92%; 
+  --surface: 32 9% 7%; 
+  --surface-elevated: 32 9% 11%; 
+  --surface-hover: 32 10% 14%; 
+  --sidebar: 32 10% 6%; 
+  --muted: 32 9% 11%; 
+  --muted-foreground: 37 7% 63%; 
+  --foreground-muted: 36 4% 45%; 
+  --border: 32 8% 18%; 
+  --border-subtle: 32 10% 14%; 
+  --input: 32 8% 22%; 
+
+  --brand: 37 56% 49%; 
+  --brand-soft: 35 62% 37%; 
+  --primary: 37 56% 49%; 
+  --primary-hover: 38 61% 62%; 
+  --primary-foreground: 0 0% 0%; 
+  --accent: 37 56% 49%;
+  --accent-foreground: 0 0% 0%;
+  --accent-on-inverse: 35 62% 37%; 
+  --inverse: 40 35% 93%; 
+  --inverse-foreground: 0 0% 8%; 
+  --focus-ring: 38 61% 62%; 
+  --overlay: rgb(0 0 0 / 76%);
+  --destructive: 4 57% 57%; 
+  --destructive-hover: 4 66% 64%; 
+  --destructive-soft: 2 33% 15%; 
+  --destructive-foreground: 210 10% 4%;
+  --success: 149 31% 50%; 
+  --success-soft: 153 37% 14%; 
+  --warning: 37 63% 56%; 
+  --warning-soft: 34 39% 15%; 
+  --info: 203 47% 59%; 
+  --info-soft: 204 42% 15%; 
+
+  --card-shadow:
+    0 1px 0 rgb(255 248 238 / 3%),
+    0 12px 32px rgb(0 0 0 / 28%);
+  --elevated-shadow: 0 28px 90px rgb(0 0 0 / 55%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-dialog-in.animate-dialog-in {
+    animation-name: dialog-in-reduced;
+  }
+  .animate-dialog-out.animate-dialog-out {
+    animation-name: dialog-out-reduced;
+  }
+  .animate-popover-in.animate-popover-in,
+  .animate-hero-media.animate-hero-media,
+  .animate-hero-rise.animate-hero-rise {
+    animation-name: fade-in;
+  }
+}
+
+@keyframes dialog-in-reduced {
+  from {
+    opacity: 0;
+    translate: -50% -50%;
+  }
+  to {
+    opacity: 1;
+    translate: -50% -50%;
+  }
+}
+@keyframes dialog-out-reduced {
+  from {
+    opacity: 1;
+    translate: -50% -50%;
+  }
+  to {
+    opacity: 0;
+    translate: -50% -50%;
+  }
+}
+
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
+    color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-inter), sans-serif;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-drift 700ms steps(1) infinite;
+}
+
+.dark body::after {
+  opacity: 0.07;
+}
+
+@keyframes grain-drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-3%, 2%);
+  }
+  50% {
+    transform: translate(2%, -3%);
+  }
+  75% {
+    transform: translate(-2%, -2%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after {
+    animation: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .footer-rule {
+      transform-origin: left;
+      animation: rule-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid hsl(var(--focus-ring));
+    outline-offset: 2px;
+  }
+}
+
+::selection {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
