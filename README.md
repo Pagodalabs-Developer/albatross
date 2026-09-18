@@ -49,6 +49,7 @@ A single-scroll public site — releases, live dates, news, band and crew profil
 ---
 
 ## Architecture
+<img width="1351" height="982" alt="image" src="https://github.com/user-attachments/assets/98223b8c-a790-4bd2-9ee8-7df1e6d8ff18" />
 
 **Data flow.** MongoDB is the only content store — there is no static data file. `lib/db.ts` is the sole data-access layer over six collections (`events`, `catalogs`, `news`, `members`, `crew`, `gallery`) plus a singleton `settings` document. Route handlers under `app/api/*` are thin wrappers around it; pages (Server Components) call it directly.
 
